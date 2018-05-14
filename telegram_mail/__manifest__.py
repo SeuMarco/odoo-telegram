@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
-    "name": """Telegram Shop""",
-    "summary": """Bot commands for Shop enviroment""",
+    "name": """Telegram Mail""",
+    "summary": """Bot commands for Mail application""",
     "category": "Telegram",
     "images": [],
     "version": "1.0.0",
@@ -10,17 +9,18 @@
     "support": "apps@it-projects.info",
     "website": "https://it-projects.info",
     "license": "LGPL-3",
-    "price": 200.00,
+    "price": 40.00,
     "currency": "EUR",
 
     "depends": [
         "telegram",
-        "product",
-        "website_sale",
+        "mail",
     ],
     "external_dependencies": {},
     "data": [
+        "data/base_automation.xml",
         "data/command.xml",
+        "views/mail_channel.xml",
     ],
     "qweb": [
     ],

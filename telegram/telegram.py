@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import re
 import io
 import base64
@@ -16,7 +15,7 @@ from odoo.tools.translate import _
 from odoo.addons.base.ir.ir_qweb.qweb import QWeb
 import odoo
 
-from openerp.tools.translate import xml_translate
+from odoo.tools.translate import xml_translate
 
 _logger = logging.getLogger(__name__)
 
@@ -318,7 +317,7 @@ Check Help Tab for the rest variables.
         context = {}
         if tsession and tsession.context:
             context = simplejson.loads(tsession.context)
-        base_url = self.env['ir.config_parameter'].get_param('web.base.url', '')
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url', '')
         locals_dict.update({
             'data': {},
             'options': {
@@ -393,7 +392,7 @@ Check Help Tab for the rest variables.
                 f = photo['data']
             else:
                 # type is 'base64' by default
-                f = io.StringIO(base64.b64decode(photo['data']))
+                f = io.BytesIO(base64.b64decode(photo['data']))
                 f.name = photo.get('filename', 'item.png')
             res['photos'].append({'file': f})
 
@@ -568,7 +567,7 @@ Check Help Tab for the rest variables.
             matrix[d[x_field]][d[g_field]] = d[v_field]
         # processed = {g_name: {'values': [value]}}
         processed = dict([(g_name, {'values': []}) for g_name in gnames])
-        for g_name, g_info in processed.items():
+        for g_name, g_info in list(processed.items()):
             cur_value = accumulate[g_name] if accumulate else 0
             for x_name in xnames:
                 value = matrix[x_name].get(g_name, 0)
@@ -615,7 +614,7 @@ Check Help Tab for the rest variables.
 
             # proceed context
             action_context = safe_eval(action.context, eval_vars)
-            for k, v in action_context.items():
+            for k, v in list(action_context.items()):
                 if not k.startswith('search_default'):
                     continue
                 filter_name = k.split('search_default_')[1]
@@ -649,7 +648,7 @@ Check Help Tab for the rest variables.
         context = self._context
         if id_or_xml_id:
             # called by ir.cron
-            if not isinstance(id_or_xml_id, (int, long)):
+            if not isinstance(id_or_xml_id, int):
                 subscription_commands = self.env.ref(id_or_xml_id)
             else:
                 subscription_commands = self.env['telegram.command'].browse(id_or_xml_id)
@@ -765,7 +764,7 @@ class IrConfigParameter(models.Model):
         _logger.debug('telegram_proceed_ir_config')
         message = {}
         active_id = self._context['active_id']
-        parameter = self.env['ir.config_parameter'].browse(active_id)
+        parameter = self.env['ir.config_parameter'].sudo().browse(active_id)
         _logger.debug('parameter = %s' % parameter)
         if parameter.key == 'telegram.token':
             message['action'] = 'token_changed'

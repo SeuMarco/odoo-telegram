@@ -38,7 +38,7 @@ Odoo parameters
 * `Activate longpolling <https://odoo-development.readthedocs.io/en/latest/admin/longpolling.html>`__ 
 * Add ``telegram`` to ``--load`` parameters, e.g.::
 
-    ./openerp-server --workers=2 --load telegram,web --config=/path/to/openerp-server.conf
+    ./odoo-server --workers=2 --load telegram,web --config=/path/to/odoo-server.conf
 
 * Additionaly you can decrease log output by adding
 
@@ -59,7 +59,7 @@ Odoo parameters
 
 * For debugging you can increase log output for telegram module:
 
-    --log-handler=openerp.addons.telegram:DEBUG
+    --log-handler=odoo.addons.telegram:DEBUG
 
 Configuration
 =============

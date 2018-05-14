@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": """Telegram Project Issues""",
     "summary": """Bot commands for Project Issue application""",

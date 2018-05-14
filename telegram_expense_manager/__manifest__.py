@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": """Telegram Expense Manager""",
     "summary": """Expense Manager Bot""",

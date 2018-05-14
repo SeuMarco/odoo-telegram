@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import odoo
 import odoo.tools.config as config

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
 <data>
 
     <record id="view_telegram_command_tree" model="ir.ui.view">
@@ -141,7 +141,7 @@ Libs that can be used:
 * datetime
 * dateutil
 * time
-* tools (openerp.tools)
+* tools (odoo.tools)
 * pygal (module telegram_chart is required)
 * types - telebot.types . See https://github.com/eternnoir/pyTelegramBotAPI/blob/master/telebot/types.py and https://core.telegram.org/bots/api#available-types
 * emoji - see https://pypi.python.org/pypi/emoji
@@ -170,4 +170,4 @@ Libs that can be used:
     <menuitem id="menu_telegram_command" parent="telegram.menu_telegram" name="Telegram Commands" sequence="10" action="action_telegram_command" />
 
 </data>
-</openerp>
+</odoo>

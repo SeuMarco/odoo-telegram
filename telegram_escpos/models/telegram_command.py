@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from openerp import api
-from openerp import models
+from odoo import api
+from odoo import models
 
 from ..escpos import encode_str
 

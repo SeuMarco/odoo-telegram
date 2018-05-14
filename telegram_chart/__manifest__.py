@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 {
-    "name": """Telegram CRM""",
-    "summary": """Bot commands for CRM application""",
-    "category": "Telegram",
+    "name": """Charts for Telegram Bot""",
+    "summary": """Technical module for charts support""",
+    "category": "Hidden",
     "images": [],
     "version": "1.0.0",
 
@@ -10,17 +9,21 @@
     "support": "apps@it-projects.info",
     "website": "https://it-projects.info",
     "license": "LGPL-3",
-    "price": 40.00,
+    "price": 200.00,
     "currency": "EUR",
 
     "depends": [
-        "telegram_chart",
-        "crm",
+        "telegram",
     ],
-    "external_dependencies": {"python": [], "bin": []},
+    "external_dependencies": {"python": [
+        'pygal',
+        'cairosvg',
+        'tinycss',
+        'cssselect',
+        'lxml',
+    ], "bin": []},
 
     "data": [
-        'data/telegram_command.xml',
     ],
     "qweb": [
     ],

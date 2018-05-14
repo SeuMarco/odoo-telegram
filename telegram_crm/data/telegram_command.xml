@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
 <data>
 
     <record model="telegram.command" id="command_pipeline">
@@ -25,13 +25,13 @@ options['charts'].append(bar_chart)
         </field>
     </record>
 
-    <record id="action_rule_pipelin" model="base.action.rule">
+    <record id="action_rule_pipelin" model="base.automation">
         <field name="name">Update telegram /pipeline</field>
         <field name="model_id" ref="crm.model_crm_lead"/>
-        <field name="kind">on_create_or_write</field>
+        <field name="trigger">on_create_or_write</field>
         <field name="server_action_ids" eval="[(6, 0, [ref('telegram.action_update_cache')])]"/>
     </record>
 
 
 </data>
-</openerp>
+</odoo>

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from odoo import models, api, fields
 from odoo.exceptions import AccessError
 from odoo.tools.translate import _
@@ -119,7 +118,7 @@ class Partner(models.Model):
         buttons = [
             {'text': an.name,
              'callback_data': dict(
-                 data.items() +
+                 list(data.items()) +
                  [('analytic_id', an.id)]
              )
              } for an in self._em_all_analytics(tag_ref=tag_ref, tag_id=tag_id)
@@ -155,10 +154,10 @@ class Partner(models.Model):
         buttons = [
             {'text': name,
              'callback_data': dict(
-                 data.items() +
+                 list(data.items()) +
                  [('tag_ref', tag_ref)]
              )
-             } for tag_ref, name in TAG2STRING.items()
+             } for tag_ref, name in list(TAG2STRING.items())
         ]
         command.keyboard_buttons(options, buttons, row_width=1)
         options['handle_reply']['custom_reply'] = data
@@ -173,7 +172,7 @@ class Partner(models.Model):
         buttons = [
             {'text': name,
              'callback_data': dict(
-                 data.items() +
+                 list(data.items()) +
                  [('periodicity_type', code)]
              )
              } for code, name in self.env['account.schedule']._fields['periodicity_type'].selection
@@ -190,10 +189,10 @@ class Partner(models.Model):
         buttons = [
             {'text': name,
              'callback_data': dict(
-                 data.items() +
+                 list(data.items()) +
                  [('periodicity_amount', value)]
              )
-             } for value, name in PERIODICITY_OPTIONS[record.periodicity_type].items()
+             } for value, name in list(PERIODICITY_OPTIONS[record.periodicity_type].items())
         ]
         command.keyboard_buttons(options, buttons, row_width=1)
         options['handle_reply']['custom_reply'] = data
@@ -208,7 +207,7 @@ class Partner(models.Model):
         buttons = [
             {'text': name,
              'callback_data': dict(
-                 data.items() +
+                 list(data.items()) +
                  [('notify', code)]
              )
              } for code, name in self.env['account.schedule']._fields['notify'].selection
@@ -470,7 +469,7 @@ class Partner(models.Model):
             'partner_id': self.id,
             'name': text or 'unknown',
         }
-        if isinstance(amount, basestring):
+        if isinstance(amount, str):
             amount = float(amount.replace(',', '.'))
 
         # move from source (e.g. wallet)

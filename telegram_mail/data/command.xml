@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
 <data>
     <record model="telegram.command" id="mail_command">
         <field name="name">/mail</field>
@@ -9,11 +9,13 @@
         <field name="universal">True</field>
         <field name="group_ids" eval="[(4, ref('base.group_user'))]" />
         <field name="model_ids" eval="[(4, ref('mail.model_mail_message'))]"/>
-        <field name="response_code"></field>
-        <field name="response_template" type="xml"><t>
-<t t-if="subscribed">You have subscribed to your new mail messages in odoo.</t>
-<t t-if="not subscribed">You have opted out.</t>
-        </t></field>
+        <field name="response_code"/>
+        <field name="response_template" type="xml">
+            <t>
+                <t t-if="subscribed">You have subscribed to your new mail messages in odoo.</t>
+                <t t-if="not subscribed">You have opted out.</t>
+            </t>
+        </field>
         <field name="notification_code">data = {}
 data['message'] = env['mail.message'].browse(telegram['event']['active_id'])
 data['message_from'] = data['message'].author_id.name
@@ -86,4 +88,4 @@ options['notify_user_ids'] = notify_user_ids
     </record>
 
 </data>
-</openerp>
+</odoo>

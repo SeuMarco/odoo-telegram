@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # local imports, that can be unused:
 from . import telegram
 from . import telegram_bus
